@@ -100,8 +100,8 @@ export default {
     height 0
     padding-bottom 56%
   .icon-wrap
-    margin-top .10rem
-    // background gold
+    padding-top .1rem
+    background #fff
     .icon
       overflow hidden
       height 0
