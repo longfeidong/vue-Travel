@@ -7,10 +7,12 @@
       <span class="iconfont search-icon">&#xe632;</span>
       <span>输入城市/景点/游玩主题</span>
     </div>
-    <div class="header-right">
-      <span>{{this.city}}</span>
-      <span class="iconfont arrow-icon">&#xe6dc;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        <span>{{this.city}}</span>
+        <span class="iconfont arrow-icon">&#xe6dc;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -32,7 +34,7 @@ export default {
   */
   .header
     display flex
-    line-height .88rem
+    line-height $headerHeight
     background $bgColor
     color #fff
     .header-left
@@ -56,6 +58,7 @@ export default {
       float right
       width 1.32rem
       text-align center
+      color #fff
       .arrow-icon
         font-size .24rem
 </style>
