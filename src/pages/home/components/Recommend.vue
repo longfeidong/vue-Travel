@@ -5,7 +5,7 @@
       <h2>热销推荐</h2>
     </div>
     <ul class="rlist">
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
         <div class="img-wrap">
           <img :src="item.imgUrl" :alt="item.title" />
         </div>
@@ -34,44 +34,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [
-        {
-          id: 1001,
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_200x200_2458ffb2.jpg',
-          title: '八达岭长城',
-          grade: 3.5,
-          commentNum: 2332,
-          price: '157.5',
-          address: '延庆县',
-          desc: '不到长城非好汉'
-        },
-        {
-          id: 1002,
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_200x200_1bc99086.jpg',
-          title: '故宫',
-          grade: 5,
-          commentNum: 542332,
-          price: '20',
-          address: '东城区',
-          desc: '世界五大宫之首，穿越与您近在咫尺'
-        },
-        {
-          id: 1003,
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1510/3e/3e8e30a6ff5d1cb090.water.jpg_200x200_ec6ab319.jpg',
-          title: '古北水镇天然温泉',
-          grade: 4.5,
-          commentNum: 432,
-          price: '120',
-          address: '古北水镇',
-          desc: ''
-        }
-      ]
-    }
+  props: {
+    list: Array
   },
   mounted () {
-    this.recommendList.forEach((item, index) => {
+    this.list.forEach((item, index) => {
       item['grade'] = (item['grade'] / 5) * 100 + '%'
     })
   }
