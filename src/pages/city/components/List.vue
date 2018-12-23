@@ -1,0 +1,128 @@
+<template>
+  <div class="list" ref="wrapper">
+    <div>
+      <div class="area">
+        <h2 class="title border-topbottom">当前城市</h2>
+        <ul class="city-list">
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+        </ul>
+      </div>
+      <div class="area">
+        <h2 class="title border-topbottom">热门城市</h2>
+        <ul class="city-list">
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+          <li class="city-list-item">
+            <div class="city-button">北京</div>
+          </li>
+        </ul>
+      </div>
+      <div class="area">
+        <h2 class="title border-topbottom">A</h2>
+        <ul class="initials-list">
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+        </ul>
+      </div>
+      <div class="area">
+        <h2 class="title border-topbottom">A</h2>
+        <ul class="initials-list">
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+        </ul>
+      </div>
+      <div class="area">
+        <h2 class="title border-topbottom">A</h2>
+        <ul class="initials-list">
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom">阿拉尔</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import BScroll from 'better-scroll'
+
+export default {
+  name: 'CityList',
+  mounted () {
+    // 必须获取组件最外层的父级元素才生效
+    this.scroll = new BScroll(this.$refs.wrapper)
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+  @import '~styles/varibles.styl'
+  .border-topbottom
+    &:before
+      border-color #777
+    &:after
+      border-color #777
+  .border-bottom
+    &:before
+      border-color #777
+  .list
+    position absolute
+    left 0
+    top 1.68rem
+    right 0
+    bottom 0
+    overflow hidden
+    .title
+      line-height .76rem
+      background #f5f5f5
+      padding-left .20rem
+      color $darkTextColor
+      font-size .24rem
+    .city-list
+      overflow hidden
+      padding .1rem .6rem .1rem .1rem
+      .city-list-item
+        float left
+        width 33.33%
+        .city-button
+          padding .1rem 0
+          margin .1rem
+          border .02rem solid #CCC
+          border-radius .06rem
+          text-align center
+          color $darkTextColor
+    .initials-list
+      .initials-list-item
+        line-height .76rem
+        padding-left .2rem
+        color $darkTextColor
+</style>
