@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-      <div class="area" v-for="(itemArr, key) of cities" :key="key">
+      <div class="area" v-for="(itemArr, key) of cities" :key="key" :ref="key">
         <h2 class="title border-topbottom">{{key}}</h2>
         <ul class="initials-list">
           <li class="initials-list-item border-bottom" v-for="item of itemArr" :key="item.id">{{item.name}}</li>
@@ -34,7 +34,18 @@ export default {
   name: 'CityList',
   props: {
     hotCities: Array,
-    cities: Object
+    cities: Object,
+    letter: String
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        // 滚动到哪个元素
+        const element = this.$refs[this.letter][0]
+        // 调用better-scroll下面的滚动到指定元素的方法
+        this.scroll.scrollToElement(element)
+      }
+    }
   },
   mounted () {
     // 必须获取组件最外层的父级元素才生效

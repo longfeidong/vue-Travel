@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :hotCities="hotCities" :cities="cities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :hotCities="hotCities" :cities="cities" :letter="letter"></city-list>
+    <city-alphabet :cities="cities" @change="handleChangeLetter"></city-alphabet>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
     return {
       hotCities: [],
       cities: {},
-      letter: []
+      letter: ''
     }
   },
   methods: {
@@ -46,6 +46,10 @@ export default {
         //   }
         // }
       }
+    },
+    handleChangeLetter (letter) {
+      // 接收到子组件Alphabet的信息，通过绑定属性传给子组件list
+      this.letter = letter
     }
   },
   mounted () {
