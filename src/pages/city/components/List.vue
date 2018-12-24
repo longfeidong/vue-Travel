@@ -12,60 +12,15 @@
       <div class="area">
         <h2 class="title border-topbottom">热门城市</h2>
         <ul class="city-list">
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
-          </li>
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
-          </li>
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
-          </li>
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
-          </li>
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
-          </li>
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
-          </li>
-          <li class="city-list-item">
-            <div class="city-button">北京</div>
+          <li class="city-list-item" v-for="item of hotCities" :key="item.id">
+            <div class="city-button">{{item.name}}</div>
           </li>
         </ul>
       </div>
-      <div class="area">
-        <h2 class="title border-topbottom">A</h2>
+      <div class="area" v-for="(itemArr, key) of cities" :key="key">
+        <h2 class="title border-topbottom">{{key}}</h2>
         <ul class="initials-list">
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-        </ul>
-      </div>
-      <div class="area">
-        <h2 class="title border-topbottom">A</h2>
-        <ul class="initials-list">
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-        </ul>
-      </div>
-      <div class="area">
-        <h2 class="title border-topbottom">A</h2>
-        <ul class="initials-list">
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
-          <li class="initials-list-item border-bottom">阿拉尔</li>
+          <li class="initials-list-item border-bottom" v-for="item of itemArr" :key="item.id">{{item.name}}</li>
         </ul>
       </div>
     </div>
@@ -77,6 +32,10 @@ import BScroll from 'better-scroll'
 
 export default {
   name: 'CityList',
+  props: {
+    hotCities: Array,
+    cities: Object
+  },
   mounted () {
     // 必须获取组件最外层的父级元素才生效
     this.scroll = new BScroll(this.$refs.wrapper)
