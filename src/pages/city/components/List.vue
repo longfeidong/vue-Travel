@@ -5,14 +5,14 @@
         <h2 class="title border-topbottom">当前城市</h2>
         <ul class="city-list">
           <li class="city-list-item">
-            <div class="city-button">北京</div>
+            <div class="city-button">{{this.currentCity}}</div>
           </li>
         </ul>
       </div>
       <div class="area">
         <h2 class="title border-topbottom">热门城市</h2>
         <ul class="city-list">
-          <li class="city-list-item" v-for="item of hotCities" :key="item.id">
+          <li class="city-list-item" v-for="item of hotCities" :key="item.id" @click="handleCityClick(item.name)">
             <div class="city-button">{{item.name}}</div>
           </li>
         </ul>
@@ -20,7 +20,7 @@
       <div class="area" v-for="(itemArr, key) of cities" :key="key" :ref="key">
         <h2 class="title border-topbottom">{{key}}</h2>
         <ul class="initials-list">
-          <li class="initials-list-item border-bottom" v-for="item of itemArr" :key="item.id">{{item.name}}</li>
+          <li class="initials-list-item border-bottom" v-for="item of itemArr" :key="item.id" @click="handleCityClick(item.name)">{{item.name}}</li>
         </ul>
       </div>
     </div>
@@ -29,6 +29,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'CityList',
@@ -36,6 +37,21 @@ export default {
     hotCities: Array,
     cities: Object,
     letter: String
+  },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.dispatch('changeCity', city)
+      // 如果操作比较简单，非批量或异步操作，可以省略actions,直接commit
+      // this.$store.commit('editCity', city)
+      this.editCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['editCity'])
   },
   watch: {
     letter () {
