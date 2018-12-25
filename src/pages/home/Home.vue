@@ -16,6 +16,8 @@ import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 // 引入数据请求工具
 import axios from 'axios'
+// 引入vuex中的共享数据state
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -25,6 +27,9 @@ export default {
     HomeIcon,
     HomeRecommend,
     HomeWeekend
+  },
+  computed: {
+    ...mapState(['city'])
   },
   data () {
     return {
@@ -37,7 +42,7 @@ export default {
   methods: {
     getHomeData () {
       // 请求本地的mock数据，借助webpack做下转发
-      axios.get('/api/index.json')
+      axios.get('/api/index.json?city=' + this.city)
         .then(this.getHomeDataSuc)
     },
     getHomeDataSuc (res) {
@@ -52,8 +57,17 @@ export default {
     }
   },
   mounted () {
+    // 组件挂载完成，记录下当前的城市
+    this.lastCity = this.city
     // 组件挂载完成请求所有数据
     this.getHomeData()
+  },
+  activated () {
+    // 使用keep-alive标签后，页面重新显示，activated就会被调用
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeData()
+    }
   }
 }
 </script>
