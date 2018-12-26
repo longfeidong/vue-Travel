@@ -5,7 +5,7 @@
       <h2>热销推荐</h2>
     </div>
     <ul class="rlist">
-      <li class="item border-bottom" v-for="item of list" :key="item.id">
+      <router-link tag="li" class="item border-bottom" v-for="item of list" :key="item.id" :to="'/detail/' + item.id">
         <div class="img-wrap">
           <img :src="item.imgUrl" :alt="item.title" />
         </div>
@@ -26,7 +26,7 @@
           </p>
           <div class="info-feature" v-if="item.desc">{{item.desc}}</div>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
