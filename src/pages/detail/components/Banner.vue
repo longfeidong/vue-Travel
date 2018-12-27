@@ -11,7 +11,6 @@
       </div>
     </div>
     <common-gallary :imgs="imgs" v-show="showDetail"  @close="handleCloseGallary"></common-gallary>
-    <div class="content"></div>
   </div>
 </template>
 
@@ -80,6 +79,4 @@ export default {
         line-height .4rem
         font-size .36rem
         margin-top .16rem
-  .content
-    height 50rem
 </style>
