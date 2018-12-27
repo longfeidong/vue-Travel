@@ -10,12 +10,15 @@
         <p class="banner-spot">{{sightName}}</p>
       </div>
     </div>
-    <common-gallary :imgs="gallaryImgs" v-show="showDetail"  @close="handleCloseGallary"></common-gallary>
+    <fade-animation>
+      <common-gallary :imgs="gallaryImgs" v-show="showDetail"  @close="handleCloseGallary"></common-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/Gallary'
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
   name: 'DetailBanner',
   props: {
@@ -29,7 +32,8 @@ export default {
     }
   },
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   },
   methods: {
     handleClickDetail () {
