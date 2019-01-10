@@ -37,10 +37,15 @@ export default {
       }
     }
   },
-  activated () {
+  /*
+    当在keep-alive标签上设置explude="Detail"时，Detail组件每次刷新时就不会被缓存，
+    那么与之对应的生命周期函数activated和deactivated就不会被调用了
+    这里改用mounted和destroyed
+  */
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  destroyed () {
     // 解绑全局事件，以免影响其它组件
     window.removeEventListener('scroll', this.handleScroll)
   }
